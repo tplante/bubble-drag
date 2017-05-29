@@ -130,8 +130,9 @@ function initBubble(data) {
 	// append main svg to document
 	const svg = d3.select("#viz")
 				  .append("svg")
-				  	 .attr("width", width + margin.left + margin.right + legendWidth)
-				  	 .attr("height", height + margin.top + margin.bottom),
+				  	 // make svg scale to container size
+				  	 .attr("preserveAspectRatio", "xMinYMin slice")
+				  	 .attr("viewBox", "0 0 " + (width + margin.left + margin.right + legendWidth) + " " + (height + margin.top + margin.bottom)),
 		  // primary group element
 		  g = svg.append("g")
 		  		 .attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
@@ -201,7 +202,7 @@ function initBubble(data) {
     // append y-axis label
     y.append("text")
      .text("# of Master's Degrees")
-     .attr("transform", "translate(" + (-margin.left + 15) + "," + (height/2) + ") rotate(-90)")
+     .attr("transform", "translate(" + (-margin.left + 20) + "," + (height/2) + ") rotate(-90)")
      .attr("text-anchor", "middle")
      .style("font-size", "16px")
      .style("fill", "#333");
